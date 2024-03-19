@@ -1,0 +1,69 @@
+Animal := Object clone do (
+    name := nil
+    sleep := method(
+        "Animal " .. name .. " is sleeping." println
+    )
+)
+
+Feline := Animal clone do (
+    eat := method("Feline " .. name .. " is eating." println)
+    play := method("Feline " .. name .. " is playing." println)
+    makeNoise := method("Feline " .. name .. " makes some noise." println)
+)
+
+Cat := Feline clone
+
+Dog := Feline clone
+
+Staff := Object clone do (
+    arrive := method("Staff has arrived." println)
+    lunch := method("Staff is having lunch." println)
+    leave := method("Staff is leaving." println)
+)
+
+Manager := Staff clone do (
+    openStore := method(
+        "Manager opens the store." println
+        "Animals make noise:" println
+        // Iterate over all animals and make them make noise
+    )
+    closeStore := method(
+        "Manager closes the store." println
+        // Put all animals to sleep
+    )
+)
+
+Clerk := Staff clone do (
+    feedAnimals := method(
+        "Clerk feeds the animals." println
+        // Iterate over all animals and make them eat
+    )
+    playAnimals := method(
+        "Clerk plays with the animals." println
+        // Iterate over all animals and make them play
+    )
+    sellAnimals := method(
+        "Clerk sells animals." println
+        // Iterate over all animals, check if they're sold, announce sale, replace if sold
+    )
+)
+
+Clock := Object clone do (
+    day := nil
+    hour := nil
+    announceHour := method(
+        // Match hour and day and execute appropriate action
+    )
+)
+
+// Create instances
+manager := Manager clone setSlots(name := "John")
+clerk := Clerk clone setSlots(name := "Alice")
+clock := Clock clone
+
+// Simulate three days
+for(day in 1 to 3, hour in 800 to 1800) do (
+    clock day := day
+    clock hour := hour
+    clock announceHour
+)
